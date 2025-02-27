@@ -19,7 +19,9 @@ Run the script from the command line as follows:
     python3 VidToFrame.py path/to/video.mp4 --format jpg --quality 95
 
 video_path: Path to the input video file.
+
     --format: Output image format (choose between jpg or png; default is jpg).
+
     --quality: Image quality (an integer between 1 and 100, default is 95).
 
 ### Converting Videos with FFmpeg
