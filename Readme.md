@@ -3,13 +3,13 @@
 This Python script extracts individual frames from a video file and saves them as image files. It is designed to effectively output 30 frames per second by skipping frames if the original video has a higher frame rate.
 ### Features
 
-    Frame Extraction:
+Frame Extraction:
     Reads the video using OpenCV and extracts frames at an effective rate of 30 FPS. If the video’s original FPS is higher, it automatically skips frames to achieve the desired rate.
 
-    Organized Output:
+Organized Output:
     Creates a parent folder named extracted_frames (if it doesn’t already exist). For each run, it generates a new timestamped subfolder (e.g., video_frames_20250227_101409) where all extracted frames are saved. This makes it easy to ignore the output directory in version control (add extracted_frames/ to your .gitignore).
 
-    Customizable Image Format and Quality:
+Customizable Image Format and Quality:
     Supports output in either JPEG or PNG format. You can specify the desired image quality via command-line arguments.
 
 ### Usage
