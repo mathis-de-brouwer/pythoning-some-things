@@ -13,6 +13,12 @@ Creates a parent folder named `extracted_frames` (if it doesn’t already exist)
 #### Customizable Image Format and Quality:
 Supports output in either JPEG or PNG format. You can specify the desired image quality via command-line arguments.
 
+#### Frame Skipping for Performance:
+Automatically skips frames to maintain the desired output FPS, ensuring efficient processing even for high-FPS videos.
+
+#### Logging:
+Provides detailed logs for each step of the process, including frame extraction progress and output directory creation.
+
 ### Usage
 
 Run the script from the command line as follows:
@@ -59,6 +65,7 @@ This project includes a secure, real-time video streaming system that can stream
 - **Multi-source Support**: Stream from either webcam or video file
 - **Performance Metrics**: Real-time display of compression/encryption times, FPS, and more
 - **Frame Saving**: Option to save received frames or take snapshots
+- **Real-time Segmentation**: Perform real-time image segmentation on received frames using a Keras model.
 
 ## Usage
 
@@ -130,6 +137,14 @@ To enable automatic saving of frames while streaming:
 python testing\ some\ things/recievertest1.py --save-frames
 ```
 
+### Real-time Segmentation
+
+To receive video and perform segmentation:
+
+```bash
+python testing\ some\ things/segmentationReceiver.py
+```
+
 ### System Requirements
 - Python 3.6+
 - OpenCV
@@ -137,6 +152,7 @@ python testing\ some\ things/recievertest1.py --save-frames
 - websockets
 - cryptography
 - numpy
+- Keras (for segmentation)
 
 ## Installation
 
@@ -144,4 +160,5 @@ To use the video streaming system, you'll need to install several Python package
 
 ```bash
 # Install all required dependencies
-pip install opencv-python pillow websockets cryptography numpy
+pip install opencv-python pillow websockets cryptography numpy keras
+```
