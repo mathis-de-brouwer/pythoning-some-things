@@ -3,12 +3,8 @@ import os
 import argparse
 from datetime import datetime
 
-#if the video aint encrypted right u have to manually convert it: 
-#   use the ffmpeg commands to do it ex:
-#   ffmpeg -i ~/path/to/video.mp4 -c:v libx264 -crf 23 -preset fast video_converted.mp4
-
-def process_video(input_path, output_format='jpg', quality=95):
-    #create parent dir for the extracted files
+def process_video(input_path, output_format='jpg', quality=95, target_fps=2):
+    # Create parent dir for the extracted files
     parent_dir = "extracted_frames"
     os.makedirs(parent_dir, exist_ok=True)
     
@@ -28,12 +24,9 @@ def process_video(input_path, output_format='jpg', quality=95):
         print("Warning: Invalid frame rate, assuming 30 FPS")
         original_fps = 30
     
-    desired_fps = 30
-    step = 1
+    step = round(original_fps / target_fps)  # We want to extract 10 frames per second
     
-    if original_fps > desired_fps:
-        step = round(original_fps / desired_fps)
-        print(f"Original FPS: {original_fps:.2f}, sampling every {step} frames")
+    print(f"Original FPS: {original_fps:.2f}, extracting every {step} frames to achieve {target_fps} FPS")
 
     frame_count = 0
     saved_count = 0
@@ -60,21 +53,19 @@ def process_video(input_path, output_format='jpg', quality=95):
                 # Progress feedback every 100 saved frames
                 if saved_count % 100 == 0:
                     print(f"Processed {saved_count} frames...")
-            
+
             frame_count += 1
     finally:
         cap.release()
     
     print(f"\nSuccess! {saved_count} frames saved to: {output_dir}/")
-    print(f"Effective output FPS: {original_fps/step:.2f}")
+    print(f"Effective output FPS: {target_fps:.2f}")
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='Extract video frames with FPS adjustment')
-    parser.add_argument('video_path', help='Path to input video file')
-    parser.add_argument('--format', choices=['jpg', 'png'], default='jpg',
-                       help='Output image format (default: jpg)')
-    parser.add_argument('--quality', type=int, default=95,
-                       help='Image quality (1-100, default: 95)')
+    parser.add_argument('video_path', help='Path to input video file')  # Corrected argument for video path
+    parser.add_argument('--format', choices=['jpg', 'png'], default='jpg', help='Output image format (default: jpg)')
+    parser.add_argument('--quality', type=int, default=95, help='Image quality (1-100, default: 95)')
     
     args = parser.parse_args()
     
