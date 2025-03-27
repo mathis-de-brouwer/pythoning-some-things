@@ -162,3 +162,27 @@ To use the video streaming system, you'll need to install several Python package
 # Install all required dependencies
 pip install opencv-python pillow websockets cryptography numpy keras
 ```
+
+## Quick Setup
+
+To quickly set up the environment with all required dependencies:
+
+### Using pip with requirements.txt
+```bash
+pip install -r requirements.txt
+```
+
+#!/bin/bash
+
+# Make setup.py executable
+chmod +x setup.py
+
+# Run the setup script
+python3 setup.py
+
+# Check if the setup was successful
+if [ $? -eq 0 ]; then
+    echo "🎉 Environment is ready!"
+else
+    echo "❌ Setup failed. Please check the error messages above."
+fi
