@@ -118,6 +118,18 @@ python testing\ some\ things/sendertest1.py --source 1 --quality 70 --fps 20 --w
 - `ESC`: Close the video stream window
 - `s`: Save the current frame as a snapshot
 
+## Frame Saving
+
+The receiver can save frames from the stream in two ways:
+
+### Automatic Frame Saving
+
+To enable automatic saving of frames while streaming:
+
+```bash
+python testing\ some\ things/recievertest1.py --save-frames
+```
+
 ### System Requirements
 - Python 3.6+
 - OpenCV
