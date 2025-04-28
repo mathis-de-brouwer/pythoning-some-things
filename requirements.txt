@@ -6,7 +6,6 @@ cryptography>=35.0.0
 numpy>=1.19.0
 
 # For segmentation functionality
-tensorflow>=2.8.0
 keras>=2.8.0
 
 # Optional dependencies
