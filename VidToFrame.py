@@ -63,7 +63,7 @@ def process_video(input_path, output_format='jpg', quality=95, target_fps=2):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='Extract video frames with FPS adjustment')
-    parser.add_argument('video_path', help='Path to input video file')  # Corrected argument for video path
+    parser.add_argument('video_path', help='Path to input video file')
     parser.add_argument('--format', choices=['jpg', 'png'], default='jpg', help='Output image format (default: jpg)')
     parser.add_argument('--quality', type=int, default=95, help='Image quality (1-100, default: 95)')
     
